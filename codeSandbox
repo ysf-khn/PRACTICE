@@ -73,3 +73,20 @@ setMeaning(emojiDictionary[e.target.value]);
     </div>
   );
 }
+
+//-------Shopping List using Map()-------
+
+const shoppingList = ['Mac','Mouse','Table','Chair','RgbLights'];
+
+export default function App() {
+  return (
+    <div className="App">
+      <h1>My Shopping List</h1>
+      <ul>
+        {
+          shoppingList.map(item => <li> {item} </li>)
+        }
+      </ul>
+    </div>
+  );
+}
