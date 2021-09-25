@@ -1,1 +1,19 @@
 https://codesandbox.io/s/first-app-0klzs?file=/src/App.js
+
+import { useState } from "react";
+import "./styles.css";
+
+export default function App() {
+  let [likeCounter, setLikeCounter] = useState(0);
+
+  function likeClickHandler() {
+    setLikeCounter(++likeCounter);
+  }
+
+  return (
+    <div className="App">
+      <h1>Inside outtt</h1>
+      <button onClick={likeClickHandler}>Like Me!</button> {likeCounter}
+    </div>
+  );
+}
