@@ -17,3 +17,26 @@ export default function App() {
     </div>
   );
 }
+
+//onChange event
+
+import { useState } from "react";
+import "./styles.css";
+
+export default function App() {
+  let [userInput, setUserInput] = useState('');
+
+  function inputChangeHandler(e){
+console.log(e.target.value);
+setUserInput(e.target.value);
+  }
+
+  return (
+    <div className="App">
+      <h1>Inside outtt</h1>
+      <input onChange={inputChangeHandler}></input>
+
+      <div> Welcome {userInput}</div>
+    </div>
+  );
+}
