@@ -1,5 +1,7 @@
 https://codesandbox.io/s/first-app-0klzs?file=/src/App.js
 
+//------useState---------
+
 import { useState } from "react";
 import "./styles.css";
 
@@ -18,7 +20,7 @@ export default function App() {
   );
 }
 
-//onChange event
+//--------onChange event----------//
 
 import { useState } from "react";
 import "./styles.css";
@@ -37,6 +39,37 @@ setUserInput(e.target.value);
       <input onChange={inputChangeHandler}></input>
 
       <div> Welcome {userInput}</div>
+    </div>
+  );
+}
+
+//-------Interpreting emoji using onChange and useState-------
+
+import { useState } from "react";
+import "./styles.css";
+
+const emojiDictionary = {
+  '😀':'Smiling',
+  '😂':'Laughing',
+  '😎':'Awesome',
+  '😮':'Disbelief',
+  '👻':'Ghost',
+  '🥰':'Feeling loved',
+};
+
+export default function App() {
+
+  let [meaning, setMeaning] = useState('');
+
+  const emojiEventHandler = function(e){
+setMeaning(emojiDictionary[e.target.value]);
+  }
+
+  return (
+    <div className="App">
+      <h1>Inside outt! </h1>
+      <input onChange={emojiEventHandler}></input>
+<div>{meaning}</div>
     </div>
   );
 }
