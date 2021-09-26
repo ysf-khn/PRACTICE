@@ -137,3 +137,33 @@ setMeaning(emojiDictionary[e.target.value]);
   );
 }
 
+//------------ASSIGNMENT-----------//
+
+import {useState} from 'react';
+import "./styles.css";
+
+const genres = {'arab': {'Biryani':'a','Shawarma':'b'},'italian':{'Lasagna':'a'}, 'home':{'Butter Chicken':'a'}};
+
+export default function App() {
+  const [food, setFood] = useState('');
+
+function showFoods(genre){
+setFood(Object.keys(genres[genre]));
+}
+
+  return (
+    <div className="App">
+     <h1>Goodfoods</h1>
+     <div>Checkout my favourite foods. Click on any genre to get started.</div>
+     <div style={{marginTop:'2rem'}}> {Object.keys(genres).map(genre=> {
+       return <span
+       onClick={()=>showFoods(genre)}
+        key={genre}
+       style={{margin:'1rem', backgroundColor:'#f3f3f3', padding:`1rem`, cursor:'pointer', border:'2px solid black', borderRadius:'0.5rem'}} > {genre} </span>
+     })}</div>
+     <hr style={{margin:'2rem'}}/>
+     <div style={{padding:'1rem' ,border:'2px solid black', borderRadius:'5px'}}>{food}</div>
+    </div>
+  );
+}
+
