@@ -90,3 +90,50 @@ export default function App() {
     </div>
   );
 }
+
+//----------FINAL EMOJI APP------------//
+
+import { useState } from "react";
+import "./styles.css";
+
+const emojiDictionary = {
+  '😀':'Smiling',
+  '😂':'Laughing',
+  '😎':'Awesome',
+  '😮':'Disbelief',
+  '👻':'Ghost',
+  '🥰':'Feeling loved',
+};
+
+const emojis = Object.keys(emojiDictionary);
+
+export default function App() {
+
+  let [meaning, setMeaning] = useState('');
+
+  const emojiEventHandler = function(e){
+setMeaning(emojiDictionary[e.target.value]);
+  }
+
+  function emojiClickHandler(emoji){
+    console.log(emoji);
+    setMeaning(emojiDictionary[emoji])
+  }
+
+  return (
+    <div className="App">
+      <h1>Inside outt! </h1>
+      <input onChange={emojiEventHandler}></input>
+<h2>{meaning}</h2>
+<h3 >{emojis.map(emoji=> {
+  return <span 
+  onClick={()=> emojiClickHandler(emoji)}
+  style={{padding:'0.5rem',cursor:'pointer'}} 
+  key={emoji}>
+  {emoji}
+  </span>
+})} </h3>
+    </div>
+  );
+}
+
