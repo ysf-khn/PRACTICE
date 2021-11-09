@@ -1,0 +1,185 @@
+https://codesandbox.io/s/first-app-0klzs?file=/src/App.js
+
+//------useState---------
+
+import { useState } from "react";
+import "./styles.css";
+
+export default function App() {
+  let [likeCounter, setLikeCounter] = useState(0);
+
+  function likeClickHandler() {
+    setLikeCounter(++likeCounter);
+  }
+
+  return (
+    <div className="App">
+      <h1>Inside outtt</h1>
+      <button onClick={likeClickHandler}>Like Me!</button> {likeCounter}
+    </div>
+  );
+}
+
+//--------onChange event----------//
+
+import { useState } from "react";
+import "./styles.css";
+
+export default function App() {
+  let [userInput, setUserInput] = useState('');
+
+  function inputChangeHandler(e){
+console.log(e.target.value);
+setUserInput(e.target.value);
+  }
+
+  return (
+    <div className="App">
+      <h1>Inside outtt</h1>
+      <input onChange={inputChangeHandler}></input>
+
+      <div> Welcome {userInput}</div>
+    </div>
+  );
+}
+
+//-------Interpreting emoji using onChange and useState-------
+
+import { useState } from "react";
+import "./styles.css";
+
+const emojiDictionary = {
+  '😀':'Smiling',
+  '😂':'Laughing',
+  '😎':'Awesome',
+  '😮':'Disbelief',
+  '👻':'Ghost',
+  '🥰':'Feeling loved',
+};
+
+export default function App() {
+
+  let [meaning, setMeaning] = useState('');
+
+  const emojiEventHandler = function(e){
+setMeaning(emojiDictionary[e.target.value]);
+  }
+
+  return (
+    <div className="App">
+      <h1>Inside outt! </h1>
+      <input onChange={emojiEventHandler}></input>
+<div>{meaning}</div>
+    </div>
+  );
+}
+
+//-------Shopping List using Map()-------
+
+const shoppingList = ['Mac','Mouse','Table','Chair','RgbLights'];
+
+export default function App() {
+  return (
+    <div className="App">
+      <h1>My Shopping List</h1>
+      <ul>
+        {
+          shoppingList.map(item => <li> {item} </li>)
+        }
+      </ul>
+    </div>
+  );
+}
+
+//----------FINAL EMOJI APP------------//
+
+import { useState } from "react";
+import "./styles.css";
+
+const emojiDictionary = {
+  '😀':'Smiling',
+  '😂':'Laughing',
+  '😎':'Awesome',
+  '😮':'Disbelief',
+  '👻':'Ghost',
+  '🥰':'Feeling loved',
+};
+
+const emojis = Object.keys(emojiDictionary);
+
+export default function App() {
+
+  let [meaning, setMeaning] = useState('');
+
+  const emojiEventHandler = function(e){
+setMeaning(emojiDictionary[e.target.value]);
+  }
+
+  function emojiClickHandler(emoji){
+    console.log(emoji);
+    setMeaning(emojiDictionary[emoji])
+  }
+
+  return (
+    <div className="App">
+      <h1>Inside outt! </h1>
+      <input onChange={emojiEventHandler}></input>
+<h2>{meaning}</h2>
+<h3 >{emojis.map(emoji=> {
+  return <span 
+  onClick={()=> emojiClickHandler(emoji)}
+  style={{padding:'0.5rem',cursor:'pointer'}} 
+  key={emoji}>
+  {emoji}
+  </span>
+})} </h3>
+    </div>
+  );
+}
+
+//------------ASSIGNMENT-----------//
+
+import {useState} from 'react';
+import "./styles.css";
+
+const genres = {'arab': {'Biryani':'a','Shawarma':'b'},'italian':{'Lasagna':'a'}, 'home':{'Butter Chicken':'a'}};
+
+export default function App() {
+  const [food, setFood] = useState('');
+
+function showFoods(genre){
+setFood(Object.keys(genres[genre]));
+}
+
+  return (
+    <div className="App">
+     <h1>Goodfoods</h1>
+     <div>Checkout my favourite foods. Click on any genre to get started.</div>
+     <div style={{marginTop:'2rem'}}> {Object.keys(genres).map(genre=> {
+       return <span
+       onClick={()=>showFoods(genre)}
+        key={genre}
+       style={{margin:'1rem', backgroundColor:'#f3f3f3', padding:`1rem`, cursor:'pointer', border:'2px solid black', borderRadius:'0.5rem'}} > {genre} </span>
+     })}</div>
+     <hr style={{margin:'2rem'}}/>
+     <div style={{padding:'1rem' ,border:'2px solid black', borderRadius:'5px'}}>{food}</div>
+    </div>
+  );
+}
+
+
+//Tailwind
+
+<!-- Hero -->
+    <section class="relative">
+      <div
+        class="
+          container
+          flex flex-col-reverse
+          lg:flex-row
+          items-center
+          gap-12
+          mt-14
+          lg:mt-28
+        "
+      >
